@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block title %}Register{% endblock %}
+
+{% block head %}
+{{super()}}
+<link rel='stylesheet' href="{{url_for('static', filename='stylesheets/index.css' )}}">
+{% endblock %}
+
+{% block body %}
+{{super()}}
+{% endblock %}
+
+{% block work_area %}
+
+<div class='work_center'>
+    <div class='left'>
+        <div class='left-top'>
+            <div class='accounts_search'>
+                <input type='text' placeholder='Search accounts..' id='search_accounts'>
+                <button title='Click to search accounts' type='button'><i class='fa fa-search'></i></button>
+                <button title='Click to add an account' onclick='toggleAccountPopup(this)'' type=' button'><i
+                        class='fa fa-plus'></i></button>
+            </div>
+            <div class='accounts' id='accounts_container'>
+                <ul>
+                    {% for account in accounts %}
+                    <form action='/{{account["ID"]}}' method='get'>
+                        <!-- <li class='TYPE-{{account["TYPE"]}}' id='{{account["ID"]}}'>{{account["NAME"]}}</li> -->
+                        <button type="submit" class='TYPE-{{account["TYPE"]}}' id='{{account["ID"]}}'>
+                            {% if account["TYPE"] == 1 %}
+                            <i class='fa fa-arrow-circle-o-left'
+                                style="font-size:18px;margin-right: 10px; color: rgb(181, 224, 181);"></i>
+                            {% elif account["TYPE"] == 2 %}
+                            <i class='fa fa-arrow-circle-o-right'
+                                style="font-size:18px;margin-right: 10px; color: lemonchiffon;"></i>
+                            {% endif %}
+                            <span>{{account["NAME"]}}</span>
+                        </button>
+                    </form>
+                    {% endfor%}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class='center'>
+        <div class='accounts_search'>
+            <input type='text' placeholder='Search account transactions..' id='account_transaction_search'>
+            <button title='Click to search accounts' type='button'><i class='fa fa-search'></i></button>
+            <button title='Click to add an account' onclick='toggleTransactionPopup(this)' type='button'><i
+                    class='fa fa-plus'></i></button>
+        </div>
+        <div class="thead">
+            <!-- <table>
+                <thead>
+                    <tr>
+                        <th width="40px">ID</th>
+                        <th width="100px">FROM</th>
+                        <th width="100px">TO</th>
+                        <th width="60px">Amount</th>
+                        <th width="200px">Comments</th>
+                        <th width="70px">Type</th>
+                        <th width="100px">Date</th>
+                        <th width="50px">By</th>
+                    </tr>
+                </thead>
+            </table> -->
+        </div>
+        <div class="accounts tbody" style="margin-top: 0px;" id="account_transactions_container">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="40px">ID</th>
+                        <th width="100px">FROM</th>
+                        <th width="100px">TO</th>
+                        <th width="100px">Amount</th>
+                        <th width="200px">Comments</th>
+                        <th width="70px">Type</th>
+                        <th width="100px">Date</th>
+                        <th width="50px">By</th>
+                        <th width="100px">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for account in account_transactions %}
+                    <tr class='TYPE-{{account["TRANSACTION_TYPE"]}}' id='transaction_id_{{account["TRANSACTION_ID"]}}'>
+                        <td width="40px" style="text-align: right;">{{account["TRANSACTION_ID"]}}</td>
+                        <td width="100px">{{account["FROM_ACCOUNT"]}}</td>
+                        <td width="100px">{{account["TO_ACCOUNT"]}}</td>
+                        <td width='100px' style="text-align: right;">&#8377; {{account["TRANSACTION_AMOUNT"]}}</td>
+                        <td width="200px">{{account["TRANSACTION_COMMENTS"]}}</td>
+                        <td width="70px">{{account["TRANSACTION_TYPE"]}}</td>
+                        <td width="100px">{{account["DT"]}}</td>
+                        <td width="50px">{{account["Transaction_By"]}}</td>
+                        <td width="100px"><a href='transaction/{{account["TRANSACTION_ID"]}}'><i class='fa fa-edit'
+                                    style="font-size: 16px;"></i></a></td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+    <div class='right'>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block popup %}
+<div id='addAccountPopup' class="popup {{ is_account_popup_active }}">
+    <div class="popup-contents {% if is_account_popup_active %}in{%endif%}">
+        <form method='post' id='accounts' name='accounts' action='/{{ form.hdn_account_id.data }}'>
+
+            <div class='header'>
+                <h4>Manage Account</h4>
+                <button type='button' onclick='toggleAccountPopup(this); window.location.href = "/";'>Close</button>
+            </div>
+
+            <div class='body'>
+                <dl>
+                    {{ form.csrf_token }}
+                    {{ form.hdn_account_id }}
+                    {{ render_field(form.account_type) }}
+                    {{ render_field(form.full_name) }}
+                    {{ render_field(form.full_address) }}
+                    {{ render_field(form.mobile) }}
+                    {{ render_field(form.account_number) }}
+                </dl>
+            </div>
+
+            <div class='footer'>
+                <h2></h2>
+                <button type='submit'>Save Data</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div id='transferMoneyPopup' class=" popup {{ is_trans_popop_active }}">
+    <div class="popup-contents {% if is_trans_popop_active %}in{%endif%}">
+        <form method='post' id="accounts" name='accounts' action="/transaction/{{ form2.hdn_transaction_id.data }}">
+
+            <div class='header'>
+                <h4>Manage Account Transaction</h4>
+                <button type='button' onclick='toggleTransactionPopup(this); window.location.href = "/";'>Close</button>
+            </div>
+
+            <div class='body'>
+                <dl>
+                    {{ form2.csrf_token }}
+                    {{ form.hdn_transaction_id }}
+                    {{ render_field(form2.FROM_ACCOUNT) }}
+                    {{ render_field(form2.TO_ACCOUNT) }}
+                    {{ render_field(form2.TRANSACTION_AMOUNT) }}
+                    {{ render_field(form2.TRANSACTION_COMMENTS) }}
+                </dl>
+            </div>
+
+            <div class='footer'>
+                <h2></h2>
+                <button type='submit'>Save Data</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

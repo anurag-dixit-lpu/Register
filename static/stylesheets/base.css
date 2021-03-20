@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(255, 255, 255, 1);
+    height: 100vh;
+    /* width: 100vw; */
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.main_container>div {
+    /* border: 1px solid gray; */
+}
+
+.navigation_top {
+    background-color: rgba(95, 95, 95, 1);
+    min-height: 30px;
+    height: 5vh;
+    display: flex;
+}
+
+.footer_bottom {
+    min-height: 20px;
+    height: 5vh;
+    background-color: rgba(52, 52, 52, 0.6);
+}
+
+button {
+    height: 35px;
+    border-radius: 5px;
+    /* font-size: 14px; */
+    transition: 0.5s;
+    border: none;
+    outline: none;
+    padding: 10px;
+}
+
+select {
+    height: 35px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: 0.5s;
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 100%;
+}
+
+input {
+    height: 35px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: 0.5s;
+}
+
+input[type='text'] {
+    border: none;
+    outline: none;
+    padding: 15px;
+    width: 100%;
+}
+
+input[type='button'] {
+    border: none;
+    outline: none;
+    padding: 15px;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(transparent, #000000);
+    border-radius: 4px;
+}
+
+.errors {
+    font-size: 12px;
+    color: red;
+    margin: 2px 0px 2px 5px;
+}
+
+.errors li {
+    list-style: none;
+}
+
+/* Menu icon css - Start*/
+
+.leftMenuIcon_Accounts {
+    margin: 0px 5px 0px 5px;
+    cursor: pointer;
+    display: none;
+}
+
+.leftMenuIcon_Accounts div {
+    width: 30px;
+    height: 3px;
+    background-color: wheat;
+    margin: 5px 0px 5px 0px;
+}
+
+.change .bar1 {
+    transform: rotate(-45deg) translate(-6px, 6px);
+    /* translate(-9px, 6px); */
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    transform: rotate(45deg) translate(-4px, -6px)
+    /* translate(-8px, -8px); */
+}
+
+@media only screen and (max-width: 600px) {
+    .leftMenuIcon_Accounts {
+        display: inline-block;
+    }
+    .left {
+        position: absolute;
+        display: none;
+    }
+    .active {
+        display: inline-block;
+    }
+}
+
+/* Menu icon css - End */

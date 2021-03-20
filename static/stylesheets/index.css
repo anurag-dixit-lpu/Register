@@ -1,0 +1,337 @@
+.work_center {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.work_center>div {
+    padding: 7px;
+}
+
+.left {
+    width: 20vw;
+    background-color: rgba(241, 241, 241, 1);
+    min-width: 300px;
+}
+
+.accounts_search {
+    display: flex;
+    /* height: 10vh; */
+    box-shadow: -5px -5px 33px #5a5a5a, 5px 5px 33px #ffffff;
+    border: 1px solid green;
+}
+
+.accounts_search input[type='text'] {
+    display: inline-block;
+    /* border-radius: 20px 0px 0px 20px; */
+    border-radius: 0px;
+    border: 2px solid rgb(250, 249, 249);
+    border-left: 7px solid rgba(52, 52, 52, .6);
+    padding: 0px 0px 0px 15px;
+    flex: 9;
+    background: rgb(250, 249, 249);
+}
+
+.accounts_search button {
+    display: inline-block;
+    border-radius: 0px;
+    /* border-radius: 0px 20px 20px 0px; */
+    padding: 0px 15px 0px 15px;
+    cursor: pointer;
+    background: rgba(180, 180, 180, 1);
+    color: #000000;
+    flex: 1;
+    /* border: 2px solid white; */
+}
+
+.accounts_search button:last-child {
+    background: rgba(180, 180, 180, 1);
+}
+
+.accounts_search button:hover {
+    background: rgba(52, 52, 52, .6);
+    color: #fff;
+}
+
+.accounts {
+    margin-top: 5px;
+    min-height: 400px;
+    height: 80vh;
+    overflow: auto;
+}
+
+.accounts ul {
+    list-style: none;
+    padding: 2px 4px;
+    color: #fff;
+    /* margin: 5px 0px; */
+    transition: 0.2s;
+}
+
+.accounts button {
+    /* padding: 10px; */
+    color: #fff;
+    margin: 5px 0px;
+    background: rgba(52, 52, 52, 0.6);
+    border-radius: 0px 20px 20px 0px;
+    transition: 0.2s;
+    cursor: pointer;
+    border: 2px solid rgb(230, 226, 226);
+    border-left: 5px solid rgba(52, 52, 52, 0.9);
+    width: 100%;
+    text-align: left;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    /* line-height: 10px; */
+    font-family: inherit;
+}
+
+.accounts button:hover {
+    background: rgba(52, 52, 52, 0.9);
+    border-left: 10px solid rgba(52, 52, 52, .1);
+}
+
+/* Popup Style Popup Style Popup Style Popup Style Popup Style */
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0%;
+    bottom: 0;
+    right: 0;
+    background: rgba(180, 180, 180, .4);
+    visibility: hidden;
+    opacity: 0;
+    transition: 400ms;
+}
+
+.popup-contents {
+    border: 1px solid rgba(255, 255, 255, 1);
+    border-radius: 5px 5px 0px 0px;
+    position: relative;
+    width: 57vw;
+    background: rgba(180, 180, 180, 1);
+    margin: -20px auto;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, .2);
+    transition: 400ms;
+}
+
+.popup-contents.in {
+    margin: 20px auto;
+}
+
+.popup .body {
+    max-height: 55vh;
+    overflow: scroll;
+    background-color: lightgray;
+}
+
+.popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media only screen and (max-width: 600px) {
+    .popup {
+        top: 0;
+        left: 1%;
+    }
+    .popup-contents.in {
+        margin: 5px auto;
+    }
+    .popup .body {
+        height: 70vh;
+        overflow: scroll;
+        background-color: lightgray;
+    }
+    .popup-contents {
+        width: 97vw;
+        height: auto;
+    }
+    .popup.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.popup button {
+    letter-spacing: 2px;
+    border-radius: 3px;
+    background: rgba(52, 52, 52, .6);
+    color: #fff;
+    cursor: pointer;
+}
+
+.popup .header, .footer, .body {
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
+    padding: 12px;
+}
+
+.popup .header, .footer {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header h4 {
+    text-transform: uppercase;
+    color: black;
+    text-shadow: 10px 10px 20px rgb(128, 128, 128, 1);
+}
+
+.popup .footer {
+    border: none;
+}
+
+.popup #accounts input, #accounts select {
+    background: rgba(245, 245, 245, 1);
+    border: 1px solid rgba(0, 0, 0, .5);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, .1);
+}
+
+.popup #accounts input:focus {
+    background: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, .8);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
+}
+
+.popup #accounts input:hover {
+    background: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, .8);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
+}
+
+.popup #accounts select:hover {
+    background: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, .8);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
+}
+
+.popup #accounts select:focus {
+    background: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, .8);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
+}
+
+.popup #accounts label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+    margin-left: 5px;
+    text-shadow: 5px 5px 20px rgba(0, 0, 0, 1);
+}
+
+.popup .footer button[type='submit'] {
+    background: rgba(52, 52, 52, .8);
+}
+
+.popup .footer button[type='submit']:hover {
+    background: rgba(52, 52, 52, 1);
+    letter-spacing: 3px;
+}
+
+.popup dl>dt {
+    margin: 10px 0px 3px 3px;
+}
+
+/* .main_container.fademe {
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
+
+.popup-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-color: rgba(128, 128, 128, 0.2);
+    display: none;
+    transition: 200ms;
+}
+
+.popup-container.kuchli {
+    display: inline-block;
+} */
+
+/* End Popup style */
+
+.center {
+    width: 70vw;
+    background-color: rgba(52, 52, 52, 0.01);
+}
+
+.right {
+    width: 10vw;
+    background-color: rgba(52, 52, 52, 0.1);
+}
+
+.center table {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid transparent;
+}
+
+.center table th, td {
+    /* width: 12%; */
+    padding: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    transition: 400ms;
+}
+
+.center table th {
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: left;
+    background: rgba(52, 52, 52, 0.6);
+    color: whitesmoke;
+    border: 1px solid rgba(52, 52, 52, 0.6);
+    border-right: 2px solid rgba(255, 255, 255, 1);
+}
+
+.thead {
+    margin-top: 10px;
+    /* padding-right: 7px; */
+}
+
+.center table tr th:nth-child(1) {
+    width: 40px;
+}
+
+.center table tr td:nth-child(1) {
+    width: 40px;
+}
+
+/* table hover effects  */
+
+.center table td:hover {
+    box-shadow: inset -2px -2px 9px #5a5a5a, inset 2px 2px 9px #5a5a5a;
+}
+
+@media only screen and (max-width: 600px) {
+    .center {
+        width: 98vw;
+    }
+    .right {
+        display: none;
+    }
+    .popup #accounts label {
+        font-size: 8px;
+    }
+    .center table {
+        font-size: 10px;
+    }
+    .accounts button {
+        font-size: 9px;
+    }
+}

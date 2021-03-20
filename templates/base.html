@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='stylesheets/base.css')}}">
+    <title>{% block title %}{% endblock %} - Page</title>
+    {% endblock %}
+</head>
+
+<body>
+    {% block body %}
+    <div class="main_container">
+        <div class="navigation_top">
+            <div class="leftMenuIcon_Accounts" onclick="toggleLeftIcon(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </div>
+        {% block work_area %}
+
+        {% endblock %}
+        <div class="footer_bottom"></div>
+    </div>
+    <div class="popup-container">
+        {% block popup %}
+
+        {% endblock %}
+    </div>
+    {% endblock %}
+    <script src="{{url_for('static', filename='scripts/index.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/base.js')}}"></script>
+</body>
+
+</html>
